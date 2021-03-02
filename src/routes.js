@@ -8,7 +8,7 @@ import { Page404 } from "./components/misc/Page404";
 import Home from './components/pages/Home'
 import About from './components/pages/About';
 import Credits from './components/pages/Credits';
-import Test from './components/pages/Test.tsx';
+import Test from './components/pages/Test.js';
 
 class Routes extends Component {
     render() {

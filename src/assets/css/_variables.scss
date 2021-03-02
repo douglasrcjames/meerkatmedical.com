@@ -8,10 +8,10 @@ $dark-grey: #6B6B6B;
 $grey: #A1A1A1;
 $light-grey: #D6D6D6;
 
-$dark-blue: #3B8FA8;
-$blue: #4FBFE0;
-$light-blue: #72CCE6;
-$xlight-blue: #DCF2F9;
+$dark-blue: #00173D;
+$blue: #002868;
+$light-blue: #004ECC;
+$xlight-blue: #85B4FF;
 
 $dark-green: #269900;
 $green: #33CC00;
@@ -21,9 +21,9 @@ $dark-yellow: #BE8C24;
 $yellow: #FDBB30;
 $light-yellow: #FDC959;
 
-$dark-red: #AA2820;
-$red: #E3352B;
-$light-red: #EE8680;
+$dark-red: #74061E;
+$red: #BF0A30;
+$light-red: #F98BA3;
 
 $dark-orange: #BE8C24;
 $orange: #FF8533;
@@ -31,39 +31,23 @@ $light-orange: #FDC959;
 
 //// Fonts ////
 @font-face {
-    font-family: "Roboto-Thin";
-    src: url(../fonts/Roboto/Roboto-Thin.ttf);
+    font-family: "CrimsonText-Regular";
+    src: url(../fonts/Crimson_Text/CrimsonText-Regular.ttf);
 }
 @font-face {
-    font-family: "Roboto-Light";
-    src: url(../fonts/Roboto/Roboto-Light.ttf);
+    font-family: "CrimsonText-SemiBold";
+    src: url(../fonts/Crimson_Text/CrimsonText-SemiBold.ttf);
 }
 @font-face {
-    font-family: "Roboto-Regular";
-    src: url(../fonts/Roboto/Roboto-Regular.ttf);
+    font-family: "CrimsonText-Bold";
+    src: url(../fonts/Crimson_Text/CrimsonText-Bold.ttf);
 }
 @font-face {
-    font-family: "Roboto-Medium";
-    src: url(../fonts/Roboto/Roboto-Medium.ttf);
-}
-@font-face {
-    font-family: "Roboto-Bold";
-    src: url(../fonts/Roboto/Roboto-Bold.ttf);
-}
-@font-face {
-    font-family: "Roboto-Black";
-    src: url(../fonts/Roboto/Roboto-Black.ttf);
-}
-@font-face {
-    font-family: "Roboto-Italic";
-    src: url(../fonts/Roboto/Roboto-Italic.ttf);
+    font-family: "CrimsonText-Italic";
+    src: url(../fonts/Crimson_Text/CrimsonText-Italic.ttf);
 }
 
-$roboto-thin: "Roboto-Thin", "Arial Thin", sans-serif;
-$roboto-light: "Roboto-Light", "Arial Light", sans-serif;
-$roboto-regular: "Roboto-Regular", "Arial Regular", sans-serif;
-$roboto-medium: "Roboto-Medium", "Arial Medium", sans-serif;
-$roboto-bold: "Roboto-Bold", "Arial Bold", sans-serif;
-$roboto-black: "Roboto-Black", "Arial Black", sans-serif;
-$roboto-italic: "Roboto-Italic", "Arial Italic", sans-serif;
-// TODO note: Roboto as primary, Arial if Roboto not available, then just an Sans-Serif if Arial not available
+$crimsontext-regular: "CrimsonText-Regular", "Times Regular", serif;
+$crimsontext-semibold: "CrimsonText-SemiBold", "Times SemiBold", serif;
+$crimsontext-bold: "CrimsonText-Bold", "Times Bold", serif;
+$crimsontext-italic: "CrimsonText-Italic", "Times Italic",serif;

@@ -1,33 +1,29 @@
 @import 'variables';
 
-.roboto-regular {
-    font-family: $roboto-regular !important;
+.crimsontext-regular {
+    font-family: $crimsontext-regular !important;
 }
 
-.roboto-medium {
-    font-family: $roboto-regular !important;
+.crimsontext-medium {
+    font-family: $crimsontext-regular !important;
 }
 
-.roboto-bold {
-    font-family: $roboto-bold !important;
-}
-
-.roboto-black {
-    font-family: $roboto-black !important;
-}
+.crimsontext-bold {
+    font-family: $crimsontext-bold !important;
+} 
 
 /* 
 * Heading
 */
 h1 {
     font-size: 3em;
-    font-family: $roboto-black;
+    font-family: $crimsontext-bold;
     color: $blue;
 }
 
 h2 {
     font-size: 2.5em;
-    font-family: $roboto-black;
+    font-family: $crimsontext-bold;
     color: $blue;
 }
 
@@ -35,7 +31,7 @@ h3 {
     font-size: 1.5em;
     padding: 0px !important;
     margin: 0px !important;
-    font-family: $roboto-black;
+    font-family: $crimsontext-bold;
     word-wrap: break-word !important;
     white-space: normal !important;
 }
@@ -53,18 +49,18 @@ h3 {
 }
 
 h4 {
-    font-family: $roboto-black;
+    font-family: $crimsontext-bold;
 }
 
 h5 {
-    font-family: $roboto-black;
+    font-family: $crimsontext-bold;
 }
 
 /* 
 * Body
 */
 p {
-    font-family: $roboto-regular !important;
+    font-family: $crimsontext-regular !important;
     line-height: 1.6;
     font-size: 16;
 }
@@ -72,7 +68,7 @@ p {
 a:link {
     color: $blue;
     text-decoration: none;
-    font-family: $roboto-regular;
+    font-family: $crimsontext-regular;
     cursor: pointer;
 }
 
@@ -86,27 +82,27 @@ a:hover {
 }
 
 b {
-    font-family: $roboto-black;
+    font-family: $crimsontext-bold;
 }
 
 i {
-    font-family: $roboto-italic
+    font-family: $crimsontext-italic
 }
 
 ul,
 ol,
 li {
-    font-family: $roboto-regular;
+    font-family: $crimsontext-regular;
     line-height: 1.6;
     font-size: 16;
 }
 
 div {
-    font-family: $roboto-regular;
+    font-family: $crimsontext-regular;
 }
 
 span {
-    font-family: $roboto-regular;
+    font-family: $crimsontext-regular;
 }
 
 

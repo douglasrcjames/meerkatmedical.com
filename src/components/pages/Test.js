@@ -1,18 +1,14 @@
 import React from 'react'
 
-type MyProps = {  };
-type MyState = { 
-
- };
-
-export default class Test extends React.Component<MyProps, MyState> {
-    constructor(props: any) {
+export default class Test extends React.Component {
+    constructor(props) {
         super(props)
     
         this.state = {
-            
+             
         }
     }
+    
 
     render() {
         return (

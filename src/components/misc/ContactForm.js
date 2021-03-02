@@ -106,7 +106,7 @@ export default class ContactForm extends Component {
                                     <Col xs={12}>
                                         <button 
                                             type="submit"
-                                            className="md-blue-btn" 
+                                            className="md blue-to-inv" 
                                             disabled={!props.dirty && !props.isSubmitting}>
                                                 Submit
                                         </button>

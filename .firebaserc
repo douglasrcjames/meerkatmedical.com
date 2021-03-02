@@ -1,5 +1,5 @@
 {
   "projects": {
-    "live": "dougs-react-boiler"
+    "default": "meerkatmedical-com"
   }
 }

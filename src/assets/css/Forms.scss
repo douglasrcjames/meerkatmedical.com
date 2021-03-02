@@ -4,7 +4,7 @@ input[type="text"],
 input[type="password"],
 input[type="email"],
 input[type="number"] {
-  font-family: $roboto-regular;
+  font-family: $crimsontext-regular;
   font-size: 16px;
   width: 100%;
   padding: 10px 10px;
@@ -27,7 +27,7 @@ select:focus {
 }
 
 textarea {
-  font-family: $roboto-regular;
+  font-family: $crimsontext-regular;
   font-size: 16px;
   width: 100%;
   height: 150px;
@@ -38,22 +38,78 @@ textarea {
   background-color: white;
 }
 
-// Buttons
-.md-blue-btn {
-  background-color: $blue;
-  font-family: $roboto-bold !important;
-  font-size: 16px;
-  border-radius: 4px;
-  padding: 10px 35px;
-  color: $white;
-  border: $light-grey solid 1px; 
-  cursor: pointer;
+//// Buttons ////
+button {
+    font-family: $crimsontext-regular;
+    border-radius: 2px;
+    transition: background-color 0.15s linear, color 0.15s linear, border 0.15s linear;
+    margin: 5px;
+    cursor: pointer;
+}
+button:focus {
+    border: none;
+    outline: none !important;
+}
+button:hover {
+    cursor: pointer;
 }
 
-.md-blue-btn:hover {
-  background-color: $light-blue;
+// Sizing
+button.sm {
+    font-size: 12px;
+    padding: 5px 25px;
+    font-weight: 600;
+}
+button.md {
+    font-size: 14px;
+    padding: 10px 35px;
+    font-weight: 700;
+}
+button.lg {
+    font-size: 16px;
+    padding: 15px 45px;
+    font-weight: 700;
 }
 
-.md-blue-btn:focus { 
-  border: none;
+.blue-to-inv {
+    background-color: $blue;
+    color: white;
+    border: transparent solid 2px;
 }
+
+.blue-to-inv:hover {
+    background-color: transparent;
+    color: $blue;
+    border: $blue solid 2px;
+}
+
+.red-to-inv {
+    background-color: $red;
+    color: white;
+    border: transparent solid 2px;
+}
+
+.red-to-inv:hover {
+    background-color: transparent;
+    color: $red;
+    border: $red solid 2px;
+}
+
+// .md-blue-btn {
+//   background-color: $blue;
+//   font-family: $roboto-bold !important;
+//   font-size: 16px;
+//   border-radius: 4px;
+//   padding: 10px 35px;
+//   color: $white;
+//   border: $light-grey solid 1px; 
+//   cursor: pointer;
+// }
+
+// .md-blue-btn:hover {
+//   background-color: $light-blue;
+// }
+
+// .md-blue-btn:focus { 
+//   border: none;
+// }

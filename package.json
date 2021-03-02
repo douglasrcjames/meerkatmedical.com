@@ -1,5 +1,5 @@
 {
-  "name": "dougs-react-boiler",
+  "name": "meerkatmedical.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,16 +7,15 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "firebase": "^7.24.0",
-    "formik": "^2.2.3",
+    "formik": "^2.2.6",
     "node-sass": "^4.14.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-flexbox-grid": "^2.1.2",
-    "react-ga": "^3.2.0",
+    "react-ga": "^3.3.0",
     "react-helmet-async": "^1.0.7",
     "react-router-dom": "^5.2.0",
-    "react-router-hash-link": "^2.2.2",
-    "typescript": "^4.1.3",
+    "react-router-hash-link": "^2.4.0",
     "yup": "^0.29.3"
   },
   "scripts": {
@@ -41,6 +40,6 @@
     ]
   },
   "devDependencies": {
-    "react-scripts": "^3.4.4"
+    "react-scripts": "^4.0.3"
   }
 }

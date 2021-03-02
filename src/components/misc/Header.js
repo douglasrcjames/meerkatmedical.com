@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink, Link, withRouter } from "react-router-dom";
 import { HashLink as HashNavLink } from 'react-router-hash-link';
-
+import logo from "../../assets/images/logos/vertical-logo.png";
 import "../../assets/css/Header.scss";
 
 class Header extends Component {
@@ -9,35 +9,17 @@ class Header extends Component {
         return (
             <header>
                 <nav className="nav-container">
-                    <Link to="/" className="">
-                        {/* TODO: update name & logo */}
+                    <Link to="/">
                         <img
                             className="nav-logo"
                             alt="logo"
-                            src={require("../../assets/images/logos/logo512.png")}
+                            src={logo}
                         />
-                        <span className="nav-l-text">Doug's React Boiler</span>
                     </Link>
                     <div className="nav-links">
-                        <NavLink 
-                            exact
-                            to="/" 
-                            className="nav-link" 
-                            activeClassName="nav-select">
-                            Home
-                        </NavLink>
-                        <NavLink 
-                            exact
-                            to="/about" 
-                            className="nav-link" 
-                            activeClassName="nav-select">
-                            About
-                        </NavLink>
-                        <HashNavLink 
-                            to="/#Contact" 
-                            className="md-blue-btn nav-button">
-                            Contact
-                        </HashNavLink>
+                        <button className="md red-to-inv">
+                            Get a free quote today! <i className="fas fa-file-invoice" />
+                        </button>
                     </div>
                     
                 </nav>
