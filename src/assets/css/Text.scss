@@ -16,19 +16,20 @@
 * Heading
 */
 h1 {
-    font-size: 3em;
+    font-size: 3.5em;
+    line-height: 1 !important;
     font-family: $crimsontext-bold;
     color: $blue;
 }
 
 h2 {
-    font-size: 2.5em;
+    font-size: 3em;
     font-family: $crimsontext-bold;
     color: $blue;
 }
 
 h3 {
-    font-size: 1.5em;
+    font-size: 2em;
     padding: 0px !important;
     margin: 0px !important;
     font-family: $crimsontext-bold;
@@ -41,10 +42,10 @@ h3 {
         font-size: 2em;
     }
     h2 {
-        font-size: 1.6em;
+        font-size: 1.8em;
     }
     h3 {
-        font-size: 1em;
+        font-size: 1.6em;
     }
 }
 
@@ -61,8 +62,7 @@ h5 {
 */
 p {
     font-family: $crimsontext-regular !important;
-    line-height: 1.6;
-    font-size: 16;
+    font-size: 24px;
 }
 
 a:link {
@@ -81,6 +81,11 @@ a:hover {
     text-decoration: underline;
 }
 
+label {
+    font-family: $crimsontext-bold;
+    font-size: 26px;
+}
+
 b {
     font-family: $crimsontext-bold;
 }
@@ -93,8 +98,7 @@ ul,
 ol,
 li {
     font-family: $crimsontext-regular;
-    line-height: 1.6;
-    font-size: 16;
+    font-size: 24px;
 }
 
 div {

@@ -10,7 +10,7 @@ body {
     margin: 0;
     position: relative;
     min-height: 100vh;
-    padding-bottom: 2.5rem;    /* Footer height */
+    padding-bottom: 10rem;    /* Footer height */
 }
 
 /* 
@@ -406,7 +406,7 @@ body {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 2.5rem;
+    height: 4rem;
     padding-bottom: 10px;
     display: flex;
     align-items: center;
@@ -419,7 +419,44 @@ body {
     }
   }
 
+// Hero
+.hero-container {
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/meerkatmedical-com.appspot.com/o/family-mid.png?alt=media&token=a995fcdc-9851-4eff-af63-fdd92ab16a7f');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    width: 100%;
+    padding-bottom: 45%;
+}
 
+.hero-content {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction	: column;
+    -ms-flex-direction		  : column;
+    flex-direction			    : column;
+    -webkit-justify-content	: center; 
+    justify-content			    : center; 
+    position: absolute;
+    top: 0; bottom: 0; left: 100px; right: 30px;
+    max-width: 60%;
+}
 
- 
-  
+@media only screen and (max-width: 900px) {
+   .hero-container {
+        padding-bottom: 10%;
+        background-image: url('https://firebasestorage.googleapis.com/v0/b/meerkatmedical-com.appspot.com/o/family-opacity-small.png?alt=media&token=a64c0f8b-4c13-4606-9be8-921c7c9a3c68');
+   }
+   .hero-content {
+        position: relative;
+        top: 0; bottom: 0; left: 0; right: 0;
+        z-index: 2;
+        padding: 30px;
+        max-width: 100%;
+   }
+}

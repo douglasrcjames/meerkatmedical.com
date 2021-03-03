@@ -41,11 +41,19 @@ textarea {
 //// Buttons ////
 button {
     font-family: $crimsontext-regular;
+    font-size: 20px !important;
     border-radius: 2px;
     transition: background-color 0.15s linear, color 0.15s linear, border 0.15s linear;
     margin: 5px;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 900px) {
+    button {
+        font-size: 16px !important;
+    }
+}
+
 button:focus {
     border: none;
     outline: none !important;
