@@ -17,7 +17,7 @@ class Routes extends Component {
             <Switch>
                 <Route exact path="/" component={withTracker(Home)} />
                 <Route exact path="/about" component={withTracker(About)} />
-                <Route exact path="/quote" component={withTracker(Quote)} />
+                <Route exact path="/quote/:zip?" component={withTracker(Quote)} />
                 <Route exact path="/test" component={withTracker(Test)} />
                 <Route exact path="/credits" component={withTracker(Credits)} />
                 <Route component={withTracker(Page404)} />

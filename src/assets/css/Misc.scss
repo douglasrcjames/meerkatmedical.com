@@ -282,6 +282,13 @@ hr {
     border: 0 none;
 }
 
+.horiz-rule-blue:before,
+.horiz-rule-blue:after {
+    display: block;
+    width: 45%;
+    border-bottom: 1px solid $blue;
+    content: "";
+}
 
 
 

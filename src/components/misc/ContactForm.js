@@ -23,16 +23,14 @@ export default class ContactForm extends Component {
       }
       
     render() {
-        const initialFormState = {
-            email: "",
-            name: "",
-            message: ""
-          };
-
         return (
             <div className="horiz-center">
                 <Formik
-                    initialValues={initialFormState}
+                    initialValues={{
+                        email: "",
+                        name: "",
+                        message: ""
+                      }}
                     onSubmit={(values, actions) => {
                         this.addMessage(values);
                         actions.resetForm()

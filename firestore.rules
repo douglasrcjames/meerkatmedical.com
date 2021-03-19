@@ -7,9 +7,9 @@ service cloud.firestore {
       allow create: if true;
     }
 
-    // No one can update, delete, read, or list but everyone can create
-    match /users/{userId} {
-      allow create, update, delete, read, list: if true;
+    match /quotes/{quoteId} {
+      allow delete, read, list: if false;
+      allow create, update: if true;
     }
   }
 }

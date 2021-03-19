@@ -16,11 +16,13 @@ class Header extends Component {
                             src={logo}
                         />
                     </Link>
-                    {/* <div className="nav-links">
-                        <button className="md red-to-inv">
-                            Get a free quote today! <i className="fas fa-file-invoice" />
-                        </button>
-                    </div> */}
+                    <div className="nav-links">
+                        <Link to="/quote">
+                            <button className="md inv-to-red">
+                                Get a quote
+                            </button>
+                        </Link>
+                    </div>
                     
                 </nav>
             </header>

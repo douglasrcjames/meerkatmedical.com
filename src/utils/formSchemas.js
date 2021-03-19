@@ -18,3 +18,72 @@ export const contactFormSchema = yup.object().shape({
       .max(30000,"Message must be at most 30000 characters long.")
       .min(10,"Message must be at least 10 characters long."),
 })
+
+export const getStartedFormSchema = yup.object().shape({
+    zip: yup
+    .string()
+    .max(10, "ZIP should be less than 10 digits."),
+})
+
+export const firstStepQuoteFormSchema = yup.object().shape({
+    onMedicare: yup
+        .string(),
+    partB2020Start: yup
+        .string(),
+    sex: yup
+        .string(),
+    smoker: yup
+        .string(),
+    dob: yup.object().shape({
+        day: yup
+            .number()
+            .transform( cv => isNaN(cv) ? undefined : cv) // for when the field is empty and not required
+            .positive()
+            .integer()
+            .min(1, "Number too low.")
+            .max(31, "Number too high."), // What about feb 28th?
+        month: yup
+            .number()
+            .transform( cv => isNaN(cv) ? undefined : cv)
+            .positive()
+            .integer()
+            .min(1, "Number too low.")
+            .max(12, "Number too high."), 
+        year: yup
+            .number()
+            .transform( cv => isNaN(cv) ? undefined : cv)
+            .positive()
+            .integer()
+            .min(1900, "Number too low.")
+            .max(2019, "Number too high."), //** make max the current year (dynamically)
+        }),
+})
+
+export const secondStepQuoteFormSchema = yup.object().shape({
+    firstName: yup
+        .string()
+        .required("A first name is required.")
+        .max(150,"Name must be at most 150 characters long.")
+        .min(1,"Name must be at least 1 characters long."),
+    lastName: yup
+        .string()
+        .required("A last name is required.")
+        .max(150,"Name must be at most 150 characters long.")
+        .min(1,"Name must be at least 1 characters long."),
+    phone: yup
+        .string()
+        .required('A Phone number is required.'),
+    email: yup
+        .string()
+        .email("That is not a valid email address.")
+        .required("Email is Required."),
+    line1: yup.string().required("Street address is required."),
+    line2: yup.string(),
+    city: yup.string().required("City is required."),
+    state: yup.string().required("State is required."),
+    zip: yup
+        .string()
+        .required("A first name is required.")
+        .max(10, "ZIP should be less than 10 digits."),
+
+})

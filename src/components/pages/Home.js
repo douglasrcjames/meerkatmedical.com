@@ -6,6 +6,35 @@ import money_img from "../../assets/images/icons/money-1.png";
 import money_bag_img from "../../assets/images/icons/money-bag.png";
 import umbrella_img from "../../assets/images/icons/insurance.png";
 export default class Home extends Component {
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             zip: '',
+             error: ''
+        }
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            zip: event.target.value,
+            error: ''
+        });
+    }
+
+    getStarted = () => {
+        if(this.state.zip){
+            if(/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(this.state.zip)){
+                this.props.history.push(`/quote/${this.state.zip}`);
+            } else {
+                this.setState({ error: 'Please enter a valid US ZIP code.' })
+            }
+        } else {
+            this.props.history.push(`/quote`);
+        }
+        
+    }
+    
     render() {
         return (
             <>
@@ -15,13 +44,15 @@ export default class Home extends Component {
             <div className="hero-container">
                 <div className="hero-content">
                     <h1 className="no-margin">The fastest Medicare Supplement quotes</h1>
-                    <p className="sm-margin-b">Citizens across America are learning more about their Medicare options with us. Get started today and secure your plan!</p>
+                    <p className="sm-margin-b">Citizens across America are learning more about their Medicare options with us. Enter your ZIP code to get started today and secure your plan!</p>
                     <div>
-                    <Link to="/quote">
-                        <button className="lg red-to-inv">
-                            Get a quote today
+                        <input type="text" placeholder="ZIP Code" value={this.state.zip} onChange={this.handleChange} className="sm-width" />
+                        &nbsp;&nbsp;
+                        <button type="submit" onClick={() => this.getStarted()} className="md red-to-inv">
+                            Get started &nbsp;&nbsp;<i className="fas fa-arrow-right"/> 
                         </button>
-                    </Link>
+                        <br/>
+                        {this.state.error && (<span className="red">{this.state.error}</span>)}
                     </div>
                     
                 </div>
