@@ -27,13 +27,17 @@ export const getStartedFormSchema = yup.object().shape({
 
 export const firstStepQuoteFormSchema = yup.object().shape({
     onMedicare: yup
-        .string(),
+        .string()
+        .required("A medicare membership is required."),
     partB2020Start: yup
-        .string(),
-    sex: yup
-        .string(),
+        .string()
+        .required("A part B start date is required."),
+    gender: yup
+        .string()
+        .required("A gender input is required."),
     smoker: yup
-        .string(),
+        .string()
+        .required("A smoker input is required."),
     dob: yup.object().shape({
         day: yup
             .number()
@@ -41,21 +45,24 @@ export const firstStepQuoteFormSchema = yup.object().shape({
             .positive()
             .integer()
             .min(1, "Number too low.")
-            .max(31, "Number too high."), // What about feb 28th?
+            .max(31, "Number too high.")
+            .required("A birth month is required."), // What about feb 28th?
         month: yup
             .number()
             .transform( cv => isNaN(cv) ? undefined : cv)
             .positive()
             .integer()
             .min(1, "Number too low.")
-            .max(12, "Number too high."), 
+            .max(12, "Number too high.")
+            .required("A birth day is required."), 
         year: yup
             .number()
             .transform( cv => isNaN(cv) ? undefined : cv)
             .positive()
             .integer()
             .min(1900, "Number too low.")
-            .max(2019, "Number too high."), //** make max the current year (dynamically)
+            .max(2019, "Number too high.")
+            .required("A birth year is required."), //** make max the current year (dynamically)
         }),
 })
 
@@ -72,11 +79,11 @@ export const secondStepQuoteFormSchema = yup.object().shape({
         .min(1,"Name must be at least 1 characters long."),
     phone: yup
         .string()
-        .required('A Phone number is required.'),
+        .required('A phone number is required.'),
     email: yup
         .string()
         .email("That is not a valid email address.")
-        .required("Email is Required."),
+        .required("Email is required."),
     line1: yup.string().required("Street address is required."),
     line2: yup.string(),
     city: yup.string().required("City is required."),

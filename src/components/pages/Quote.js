@@ -6,6 +6,7 @@ import Select from "react-dropdown-select";
 import { firstStepQuoteFormSchema, secondStepQuoteFormSchema } from '../../utils/formSchemas'
 import { stateOptions } from '../../utils/constants'
 import { firestore } from "../../Fire.js";
+import { formatPhoneNumber } from '../../utils/misc';
 
 export default class Quote extends Component {
     constructor(props) {
@@ -23,9 +24,13 @@ export default class Quote extends Component {
         firestore.collection('quotes').add({
             onMedicare: values.onMedicare,
             partB2020Start: values.partB2020Start,
-            sex: values.sex,
+            gender: values.gender,
             smoker: values.smoker,
-            dob: values.dob,
+            dob: {
+                month: values.dob.month.toString().padStart(2, '0'),
+                day: values.dob.day.toString().padStart(2, '0'),
+                year: values.dob.year.toString()
+            },
             timestamp: Date.now(),
         }).then(doc => {
             this.setState({
@@ -41,13 +46,15 @@ export default class Quote extends Component {
         firestore.collection('quotes').doc(this.state.quoteId).set({
             firstName: values.firstName,
             lastName: values.lastName,
-            phone: values.phone,
+            phone: formatPhoneNumber(values.phone),
             email: values.email,
-            line1: values.line1,
-            line2: values.line2,
-            zip: values.zip,
-            city: values.city,
-            state: values.state,
+            address: {
+                line1: values.line1,
+                line2: values.line2,
+                zip: values.zip,
+                city: values.city,
+                state: values.state,
+            },
             timestamp: Date.now(),
         }, {merge: true}).then(() => {
             this.setState({
@@ -72,7 +79,7 @@ export default class Quote extends Component {
                             initialValues={{
                                 onMedicare: "",
                                 partB2020Start: "",
-                                sex: "",
+                                gender: "",
                                 smoker: "",
                                 dob: "",
                             }}
@@ -86,8 +93,8 @@ export default class Quote extends Component {
                                 <form onSubmit={props.handleSubmit}>
                                     <Grid fluid>
                                         <Row>
-                                            <Col sm={12} md={6} className="sm-margin-b">
-                                                <label id="onMedicare-radio-group">On Medicare?</label>
+                                            <Col sm={12} style={{marginBottom: "30px"}}>
+                                                <label id="onMedicare-radio-group">Are you currently on Medicare?</label>
                                                 <div role="group" aria-labelledby="onMedicare-radio-group">
                                                     <label className="check-container">
                                                         <Field type="radio" name="onMedicare" value="yes" />
@@ -104,7 +111,7 @@ export default class Quote extends Component {
                                         </Row>
                                         {(props.values.onMedicare) && (
                                             <Row>
-                                                <Col sm={12} md={6} className="sm-margin-b">
+                                                <Col sm={12} style={{marginBottom: "30px"}}>
                                                     <label id="partB2020Start-radio-group">Is your Medicare part B date after January 1st, 2020?</label>
                                                     <div role="group" aria-labelledby="partB2020Start-radio-group">
                                                         <label className="check-container">
@@ -123,16 +130,16 @@ export default class Quote extends Component {
                                         )}
                                     {(props.values.onMedicare && props.values.partB2020Start) && (
                                             <Row>
-                                                <Col sm={12} md={6} className="sm-margin-b">
-                                                    <label id="sex-radio-group">Sex?</label>
-                                                    <div role="group" aria-labelledby="sex-radio-group">
+                                                <Col sm={12} style={{marginBottom: "30px"}}>
+                                                    <label id="gender-radio-group">What is your gender?</label>
+                                                    <div role="group" aria-labelledby="gender-radio-group">
                                                         <label className="check-container">
-                                                            <Field type="radio" name="sex" value="male" />
+                                                            <Field type="radio" name="gender" value="M" />
                                                             <span className="checkmark"></span>
                                                             Male
                                                         </label>
                                                         <label className="check-container">
-                                                            <Field type="radio" name="sex" value="female" />
+                                                            <Field type="radio" name="gender" value="F" />
                                                             <span className="checkmark"></span>
                                                             Female
                                                         </label>
@@ -141,18 +148,18 @@ export default class Quote extends Component {
                                             </Row>
                                     )}
                                     
-                                    {(props.values.onMedicare && props.values.partB2020Start && props.values.sex) && ( 
+                                    {(props.values.onMedicare && props.values.partB2020Start && props.values.gender) && ( 
                                         <Row>
-                                            <Col sm={12} md={6} className="sm-margin-b">
-                                                <label id="smoker-radio-group">Smoker?</label>
+                                            <Col sm={12} style={{marginBottom: "30px"}}>
+                                                <label id="smoker-radio-group">Are you a smoker?</label>
                                                 <div role="group" aria-labelledby="smoker-radio-group">
                                                     <label className="check-container">
-                                                        <Field type="radio" name="smoker" value="yes" />
+                                                        <Field type="radio" name="smoker" value="Yes" />
                                                         <span className="checkmark"></span>
                                                         Yes
                                                     </label>
                                                     <label className="check-container">
-                                                        <Field type="radio" name="smoker" value="no" />
+                                                        <Field type="radio" name="smoker" value="No" />
                                                         <span className="checkmark"></span>
                                                         No
                                                     </label>
@@ -160,9 +167,9 @@ export default class Quote extends Component {
                                             </Col>
                                         </Row>
                                     )}
-                                    {(props.values.onMedicare && props.values.partB2020Start && props.values.sex) && ( 
-                                        <Row>
-                                            <Col xs={12} sm={6} md={3}>
+                                    {(props.values.onMedicare && props.values.partB2020Start && props.values.gender && props.values.smoker) && ( 
+                                        <Row style={{marginBottom: "30px"}}>
+                                            <Col xs={12} sm={3}>
                                                 <label htmlFor="month">Birth Month: </label>
                                                 <Field
                                                     name="dob.month"
@@ -180,7 +187,7 @@ export default class Quote extends Component {
                                                     ""
                                                     )}
                                             </Col>
-                                            <Col xs={12} sm={6} md={3}>
+                                            <Col xs={12} sm={3}>
                                                 <label htmlFor="day">Birth Day: </label>
                                                 <Field
                                                     name="dob.day"
@@ -198,7 +205,7 @@ export default class Quote extends Component {
                                                     ""
                                                     )}
                                             </Col>
-                                            <Col xs={12} sm={6} md={3}>
+                                            <Col xs={12} sm={3}>
                                                 <label htmlFor="year">Birth Year: </label>
                                                 <Field
                                                     name="dob.year"
@@ -218,7 +225,7 @@ export default class Quote extends Component {
                                             </Col>
                                         </Row>
                                     )}
-                                    {(props.values.onMedicare && props.values.partB2020Start && props.values.sex && props.values.smoker) && (
+                                    {(props.values.onMedicare && props.values.partB2020Start && props.values.gender && props.values.smoker && props.values.dob.month && props.values.dob.day && props.values.dob.year) && (
                                         <Row className="md-margin-b">
                                             <Col xs={12}>
                                                 <button 
@@ -238,7 +245,10 @@ export default class Quote extends Component {
                     </div>
                 )}
 
-                { this.state.showStepTwo && (
+                { 
+                this.state.showStepTwo
+                // true
+                 && (
                     <div>
                         <h2>Step 2 of 2</h2>
                         <Formik
@@ -309,7 +319,7 @@ export default class Quote extends Component {
                                                     onChange={props.handleChange}
                                                     placeholder="(123) 456-7890"
                                                     name="phone"
-                                                    value={props.values.phone}
+                                                    value={formatPhoneNumber(props.values.phone)}
                                                 />
                                                 <br/>
                                                 {props.errors.phone && props.touched.phone ? (
@@ -400,19 +410,26 @@ export default class Quote extends Component {
                                             </Col>
                                             <Col sm={12} md={6} lg={4} className="sm-margin-b">
                                                 <label>State:</label>
-                                                <Field
+                                                {/* <Field
                                                     type="text"
                                                     required
                                                     onChange={props.handleChange}
                                                     placeholder="Not provided"
                                                     name="state"
                                                     value={props.values.state || ''}
-                                                />
-                                                {/* <Select
-                                                    options={stateOptions}
-                                    
-                                                    onChange={(value) => console.log(value)}
                                                 /> */}
+                                                <Select
+                                                    options={stateOptions}
+                                                    placeholder="Not provided"
+                                                    labelField={"name"}
+                                                    valueField={"name"}
+                                                    name="state"
+                                                    key={"id"}
+                                                    color={"#002868"}
+                                                    className="select"
+                                                    // values={props.values.state}
+                                                    onChange={(option) => props.setFieldValue("state", option[0].abbreviation)}
+                                                />
                                                 <br/>
                                                 {props.errors.state && props.touched.state ? (
                                                     <span className="red">{props.errors.state}</span>
@@ -440,10 +457,7 @@ export default class Quote extends Component {
                                         </Row>
                                         <Row className="md-margin-b">
                                             <Col xs={12}>
-                                                <button 
-                                                    type="submit"
-                                                    className="md blue-to-inv" 
-                                                    disabled={!props.dirty && !props.isSubmitting}>
+                                                <button type="submit" className="md blue-to-inv">
                                                         Submit
                                                 </button>
                                             </Col>
@@ -456,8 +470,8 @@ export default class Quote extends Component {
                 )}
                 { this.state.showFinalStep && (
                     <div>
-                        <h2>Thanks!</h2>
-                        <p>We have received your quote and you will be contacted soon by a team member.</p>
+                        <h2 className="sm-margin-t">Thanks!</h2>
+                        <p className="no-margin">We have received your quote and you will be contacted soon by a team member.</p>
                     </div>
                 )}
                 
