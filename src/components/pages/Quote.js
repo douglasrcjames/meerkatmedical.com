@@ -22,8 +22,8 @@ export default class Quote extends Component {
 
     captureFirstStep = (values) => {
         firestore.collection('quotes').add({
-            onMedicare: values.onMedicare,
-            partB2020Start: values.partB2020Start,
+            onMedicare: values.onMedicare === 'Yes' ? true : false,
+            partB2020Start: values.partB2020Start === 'Yes' ? true : false,
             gender: values.gender,
             smoker: values.smoker,
             dob: {
@@ -55,7 +55,6 @@ export default class Quote extends Component {
                 city: values.city,
                 state: values.state,
             },
-            timestamp: Date.now(),
         }, {merge: true}).then(() => {
             this.setState({
                 showStepTwo: false,
@@ -97,12 +96,12 @@ export default class Quote extends Component {
                                                 <label id="onMedicare-radio-group">Are you currently on Medicare?</label>
                                                 <div role="group" aria-labelledby="onMedicare-radio-group">
                                                     <label className="check-container">
-                                                        <Field type="radio" name="onMedicare" value="yes" />
+                                                        <Field type="radio" name="onMedicare" value="Yes" />
                                                         <span className="checkmark"></span>
                                                         Yes
                                                     </label>
                                                     <label className="check-container">
-                                                        <Field type="radio" name="onMedicare" value="no" />
+                                                        <Field type="radio" name="onMedicare" value="No" />
                                                         <span className="checkmark"></span>
                                                         No
                                                     </label>
@@ -115,12 +114,12 @@ export default class Quote extends Component {
                                                     <label id="partB2020Start-radio-group">Is your Medicare part B date after January 1st, 2020?</label>
                                                     <div role="group" aria-labelledby="partB2020Start-radio-group">
                                                         <label className="check-container">
-                                                            <Field type="radio" name="partB2020Start" value="yes" />
+                                                            <Field type="radio" name="partB2020Start" value="Yes" />
                                                             <span className="checkmark"></span>
                                                             Yes
                                                         </label>
                                                         <label className="check-container">
-                                                            <Field type="radio" name="partB2020Start" value="no" />
+                                                            <Field type="radio" name="partB2020Start" value="No"/>
                                                             <span className="checkmark"></span>
                                                             No
                                                         </label>
@@ -469,7 +468,7 @@ export default class Quote extends Component {
                     </div>
                 )}
                 { this.state.showFinalStep && (
-                    <div>
+                    <div className="sm-margin-t">
                         <h2 className="sm-margin-t">Thanks!</h2>
                         <p className="no-margin">We have received your quote and you will be contacted soon by a team member.</p>
                     </div>

@@ -45,15 +45,15 @@ export default class Home extends Component {
                 <div className="hero-content">
                     <h1 className="no-margin">The fastest Medicare Supplement quotes</h1>
                     <p className="sm-margin-b">Citizens across America are learning more about their Medicare options with us. Enter your ZIP code to get started today and secure your plan!</p>
-                    <div>
+                    <form onSubmit={this.getStarted}>
                         <input type="text" placeholder="ZIP Code" value={this.state.zip} onChange={this.handleChange} className="sm-width" />
                         &nbsp;&nbsp;
-                        <button type="submit" onClick={() => this.getStarted()} className="md red-to-inv">
+                        <button type="submit" className="md red-to-inv">
                             Get started &nbsp;&nbsp;<i className="fas fa-arrow-right"/> 
                         </button>
                         <br/>
                         {this.state.error && (<span className="red">{this.state.error}</span>)}
-                    </div>
+                    </form>
                     
                 </div>
             </div>
