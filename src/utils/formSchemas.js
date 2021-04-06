@@ -25,48 +25,7 @@ export const getStartedFormSchema = yup.object().shape({
     .max(10, "ZIP should be less than 10 digits."),
 })
 
-export const firstStepQuoteFormSchema = yup.object().shape({
-    onMedicare: yup
-        .string()
-        .required("A medicare membership is required."),
-    partB2020Start: yup
-        .string()
-        .required("A part B start date is required."),
-    gender: yup
-        .string()
-        .required("A gender input is required."),
-    smoker: yup
-        .string()
-        .required("A smoker input is required."),
-    dob: yup.object().shape({
-        day: yup
-            .number()
-            .transform( cv => isNaN(cv) ? undefined : cv) // for when the field is empty and not required
-            .positive()
-            .integer()
-            .min(1, "Number too low.")
-            .max(31, "Number too high.")
-            .required("A birth month is required."), // What about feb 28th?
-        month: yup
-            .number()
-            .transform( cv => isNaN(cv) ? undefined : cv)
-            .positive()
-            .integer()
-            .min(1, "Number too low.")
-            .max(12, "Number too high.")
-            .required("A birth day is required."), 
-        year: yup
-            .number()
-            .transform( cv => isNaN(cv) ? undefined : cv)
-            .positive()
-            .integer()
-            .min(1900, "Number too low.")
-            .max(2019, "Number too high.")
-            .required("A birth year is required."), //** make max the current year (dynamically)
-        }),
-})
-
-export const secondStepQuoteFormSchema = yup.object().shape({
+export const quoteFormSchema = yup.object().shape({
     firstName: yup
         .string()
         .required("A first name is required.")
@@ -90,7 +49,38 @@ export const secondStepQuoteFormSchema = yup.object().shape({
     state: yup.string().required("State is required."),
     zip: yup
         .string()
-        .required("A first name is required.")
+        .required("A ZIP code is required.")
         .max(10, "ZIP should be less than 10 digits."),
-
+    gender: yup
+        .string()
+        .required("A gender input is required."),
+    smoker: yup
+        .string()
+        .required("A smoker input is required."),
+    dob: yup.object().shape({
+        day: yup
+            .number()
+            .required("A birth month is required.")
+            .transform( cv => isNaN(cv) ? undefined : cv) // for when the field is empty and not required
+            .positive()
+            .integer()
+            .min(1, "Number too low.")
+            .max(31, "Number too high."), // What about feb 28th?
+        month: yup
+            .number()
+            .required("A birth day is required.")
+            .transform( cv => isNaN(cv) ? undefined : cv)
+            .positive()
+            .integer()
+            .min(1, "Number too low.")
+            .max(12, "Number too high."), 
+        year: yup
+            .number()
+            .required("A birth year is required.")
+            .transform( cv => isNaN(cv) ? undefined : cv)
+            .positive()
+            .integer()
+            .min(1900, "Number too low.")
+            .max(2019, "Number too high."), //** make max the current year (dynamically)
+        }),
 })

@@ -2,7 +2,6 @@
 import functions = require('firebase-functions');
 import admin = require("firebase-admin");
 import nodemailer = require('nodemailer');
-import { DocumentSnapshot } from 'firebase-functions/lib/providers/firestore';
 admin.initializeApp(functions.config().firebase);
 const request = require('request');
 
@@ -55,10 +54,10 @@ export const onMessageCreated = functions.firestore.document('messages/{messageI
     }
   });
 
-export const onQuoteUpdated = functions.firestore.document('quotes/{quoteId}')
-    .onUpdate(async (change: functions.Change<DocumentSnapshot>, context: functions.EventContext) => {
-        const previousValue = change.before.data();
-        const newValue = change.after.data();
+export const onQuoteCreated = functions.firestore.document('quotes/{quoteId}')
+    .onCreate((snap: { data: () => any; }) => {
+        const previousValue = snap.data();
+        const newValue = snap.data();
         
         if (previousValue === null || !previousValue) {
             console.log("No data for quote before change");
@@ -107,22 +106,6 @@ export const onQuoteUpdated = functions.firestore.document('quotes/{quoteId}')
                     city: newValue.address.city,
                     stateAbbrev: newValue.address.state,
                     zip: newValue.address.zip,
-                    // "customFields": [
-                    //     {
-                    //       "Name": "Enrolled in Part B",
-                    //       "Value": [
-                    //         newValue.partB2020Start
-                    //       ]
-                    //     },
-                    //     {
-                    //       "Name": "Part B After 1.1.20",
-                    //       "Value": [
-                    //         newValue.onMedicare
-                    //       ]
-                    //     }
-                    //   ]
-                    'custom_Enrolled in Part B': newValue.onMedicare,
-                    'custom_Part B After 1.1.20': newValue.partB2020Start
                 }
             })
 
