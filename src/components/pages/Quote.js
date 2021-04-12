@@ -54,7 +54,8 @@ export default class Quote extends Component {
                 <h1>Supplemental Medicare Insurance Quote</h1>
                 <div className="horiz-rule-blue" />
 
-                { !this.state.submittedForm && (
+                { !this.state.submittedForm && 
+                (
                     <div className="md-margin-t">
                         <Formik
                             initialValues={{
@@ -62,18 +63,6 @@ export default class Quote extends Component {
                                 lastName: "",
                                 phone: "",
                                 email: "",
-                                line1: "",
-                                line2: "",
-                                city: "",
-                                state: "",
-                                zip: this.state.zip,
-                                gender: "",
-                                smoker: "",
-                                dob: {
-                                    day: "",
-                                    month: "",
-                                    year: ""
-                                }
                             }}
                             onSubmit={(values, actions) => {
                                 this.submitQuote(values);
