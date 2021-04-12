@@ -155,7 +155,8 @@ export default class Quote extends Component {
                                                     ""
                                                 )}
                                             </Col>
-                                        </Row>
+                                        </Row> 
+                                        {/*
                                         <Row>
                                             <Col>
                                                 <h3>Address</h3>
@@ -222,7 +223,7 @@ export default class Quote extends Component {
                                                     placeholder="Not provided"
                                                     name="state"
                                                     value={props.values.state || ''}
-                                                /> */}
+                                                /> 
                                                 <Select
                                                     options={stateOptions}
                                                     placeholder="Not provided"
@@ -358,7 +359,8 @@ export default class Quote extends Component {
                                                     ""
                                                 )}
                                             </Col>
-                                        </Row>
+                                        </Row> 
+                                        */}
                                         <Row className="md-margin-b">
                                             <Col xs={12}>
                                                 <button type="submit" className="md blue-to-inv">
