@@ -43,7 +43,7 @@ export default class Home extends Component {
             </Helmet>
             <div className="hero-container">
                 <div className="hero-content">
-                    <h1 className="no-margin">The fastest Medicare Supplement quotes</h1>
+                    <h1 className="no-margin">The Fastest way to Save on Medicare</h1>
                     <p className="sm-margin-b">Citizens across America are learning more about their Medicare options with us. Enter your ZIP code to get started today and secure your plan!</p>
                     <form onSubmit={this.getStarted}>
                         <input type="text" placeholder="ZIP Code" value={this.state.zip} onChange={this.handleChange} className="sm-width" />

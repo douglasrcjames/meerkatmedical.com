@@ -24,7 +24,7 @@ export default class Quote extends Component {
             lastName: values.lastName,
             phone: formatPhoneNumber(values.phone),
             email: values.email,
-            address: {
+           /* address: {
                 line1: values.line1,
                 line2: values.line2,
                 zip: values.zip,
@@ -37,7 +37,7 @@ export default class Quote extends Component {
                 month: values.dob.month.toString().padStart(2, '0'),
                 day: values.dob.day.toString().padStart(2, '0'),
                 year: values.dob.year.toString()
-            },
+            },*/  
         }).then(() => {
             this.setState({
                 submittedForm: true

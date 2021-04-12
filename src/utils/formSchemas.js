@@ -43,7 +43,7 @@ export const quoteFormSchema = yup.object().shape({
         .string()
         .email("That is not a valid email address.")
         .required("Email is required."),
-    line1: yup.string().required("Street address is required."),
+    /*line1: yup.string().required("Street address is required."),
     line2: yup.string(),
     city: yup.string().required("City is required."),
     state: yup.string().required("State is required."),
@@ -82,5 +82,5 @@ export const quoteFormSchema = yup.object().shape({
             .integer()
             .min(1900, "Number too low.")
             .max(2019, "Number too high."), //** make max the current year (dynamically)
-        }),
+        }),*/
 })
