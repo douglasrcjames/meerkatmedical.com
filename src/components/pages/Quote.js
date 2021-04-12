@@ -51,7 +51,7 @@ export default class Quote extends Component {
     render() {
         return (
             <div className="wrapper">
-                <h1>Supplemental Medicare Insurance Quote test</h1>
+                <h1>Supplemental Medicare Insurance Quote</h1>
                 <div className="horiz-rule-blue" />
 
                 { !this.state.submittedForm && 
