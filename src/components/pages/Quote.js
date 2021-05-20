@@ -51,7 +51,9 @@ export default class Quote extends Component {
     render() {
         return (
             <div className="wrapper">
-                <h1>Supplemental Medicare Insurance Quote</h1>
+                <h1>Connect with a Medicare Expert</h1>
+                <div className="horiz-rule-blue" />
+                <p>Enter your information below to get your custom Medicare Quote</p>
                 <div className="horiz-rule-blue" />
 
                 { !this.state.submittedForm && 
@@ -165,7 +167,8 @@ export default class Quote extends Component {
                         <p className="no-margin">We have received your quote and you will be contacted soon by a team member.</p>
                     </div>
                 )}
-                
+                <h2>...Or Call Now to talk to a live Medicare and Retirement Specialist</h2>
+                <h1>918-392-2445</h1>
             </div>
         )
     }

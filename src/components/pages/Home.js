@@ -44,7 +44,7 @@ export default class Home extends Component {
             <div className="hero-container">
                 <div className="hero-content">
                     <h1 className="no-margin">The Fastest way to Save on Medicare</h1>
-                    <p className="sm-margin-b">Citizens across America are learning more about their Medicare options with us. Enter your ZIP code to get started today and secure your plan!</p>
+                    <p className="sm-margin-b">Enter your Zip Code to get your Medicare Supplement prices today!</p>
                     <form onSubmit={this.getStarted}>
                         <input type="text" placeholder="ZIP Code" value={this.state.zip} onChange={this.handleChange} className="sm-width" />
                         &nbsp;&nbsp;
@@ -59,11 +59,12 @@ export default class Home extends Component {
             </div>
             <div className="slant-block bg-blue edge--top--reverse edge--bottom">
                 <div className="wrapper white">
-                    <h1 className="white no-margin">What are Medicare Supplements?</h1>
+                    <h1 className="white no-margin">What Options do I have with Medicare?</h1>
                     <p>
-                        Medigap, also known as a Medicare Supplement, is a type of insurance that helps fill the "gaps" in Original Medicare and is sold by independent companies. 
-                        Original Medicare pays for a good chunk, but not all, of the cost for covered health care services, supplies, etc. 
-                        A Medicare Supplement Insurance (Medigap) policy can assist paying for some of the remaining health care costs, like copayments, coinsurance, and deductibles.
+                        Medicare consists of two paths. Traditional Medicare and Medicare Advantage. 
+                        With Traditional Medicare, MediGap or Supplemental Policies are the best way to stabilize costs.
+                        For Advantage plan users, supplemental coverage is also available. 
+                        By combining the best Medicare and Supplement plans, consumers can navigate retirement without financial concerns.
                     </p>
                     <Grid fluid className="md-margin-t-b">
                         <Row center="xs">
