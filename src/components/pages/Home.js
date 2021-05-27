@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Field, Formik } from 'formik';
+import { emailListFormSchema } from '../../utils/formSchemas'
 import { Col, Grid, Row } from 'react-flexbox-grid';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
@@ -44,7 +46,7 @@ export default class Home extends Component {
             <div className="hero-container">
                 <div className="hero-content">
                     <h1 className="no-margin">The Fastest way to Save on Medicare</h1>
-                    <p className="sm-margin-b">Enter your Zip Code to get your Medicare Supplement prices today!</p>
+                    <p className="sm-margin-b">Enter your Zip Code to get started</p>
                     <form onSubmit={this.getStarted}>
                         <input type="text" placeholder="ZIP Code" value={this.state.zip} onChange={this.handleChange} className="sm-width" />
                         &nbsp;&nbsp;
@@ -54,7 +56,14 @@ export default class Home extends Component {
                         <br/>
                         {this.state.error && (<span className="red">{this.state.error}</span>)}
                     </form>
-                    
+                    <br/>
+                    <h3>Or Enter Your Email to Recieve your Free Medicare Booklet</h3>
+                    <form onSubmit={this.emailList}>
+                        <input type="text" placeholder="john_doe@gmail.com" value={this.state.email} onChange={this.handleChange} className="sm-width" />
+                        <button type="submit" className="md red-to-inv">
+                            Submit &nbsp;&nbsp;<i className="fas"/> 
+                        </button>
+                    </form>
                 </div>
             </div>
             <div className="slant-block bg-blue edge--top--reverse edge--bottom">
@@ -109,6 +118,61 @@ export default class Home extends Component {
                         </button>
                     </Link>
                 </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <div className="slant-block bg-blue edge--top--reverse edge--bottom">
+                    <div className="wrapper white center-text">
+                        <h1 className="white no-margin">Stay up to date with Meerkat Medical</h1>
+                        <br></br>
+                        <p className="sm-margin-b">Enter your email below, and don't let Medicare changes take you by surprise.</p>
+                        <div className="md-margin-t">
+                            <Formik
+                                initialValues={{
+                                    email: "",
+                                }}
+                                onSubmit={(values, actions) => {
+                                    this.submitQuote(values);
+                                }}
+                                validationSchema={emailListFormSchema}
+                            >
+                                {props => (
+                                    <form onSubmit={props.handleSubmit}>
+                                        <Grid>    
+                                            <div sm={12} md={6} className="sm-margin-b">
+                                                <label>Email:</label>
+                                                <br/>
+                                                <Field
+                                                    type="text"
+                                                    required
+                                                    onChange={props.handleChange}
+                                                    placeholder="john_doe@gmail.com"
+                                                    name="email"
+                                                    value={props.values.email}
+                                                />
+                                                {props.errors.email && props.touched.email ? (
+                                                    <span className="red">{props.errors.email}</span>
+                                                ) : (
+                                                    ""
+                                                )}
+                                            </div>
+                                            <Row className="md-margin-b">
+                                                <Col xs={12}>
+                                                    <button type="submit" className="md red-to-inv">
+                                                            Submit
+                                                    </button>
+                                                </Col>
+                                            </Row>
+                                        </Grid>
+                                    </form>
+                                )}
+                            </Formik>
+                        </div>
+                    </div>
+                </div>                                            
             </div>
             </>
         )

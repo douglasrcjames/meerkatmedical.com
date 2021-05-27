@@ -25,6 +25,13 @@ export const getStartedFormSchema = yup.object().shape({
     .max(10, "ZIP should be less than 10 digits."),
 })
 
+export const emailListFormSchema = yup.object().shape({
+    email: yup
+        .string()
+        .email("That is not a valid email address.")
+        .required("Email is required."),
+})
+
 export const quoteFormSchema = yup.object().shape({
     firstName: yup
         .string()
